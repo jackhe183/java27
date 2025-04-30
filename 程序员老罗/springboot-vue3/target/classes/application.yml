@@ -1,0 +1,14 @@
+server:
+  port: 8088
+#  这里很奇怪，使用8082端口反而访问不了了，使用8080端口倒是可以
+#  待解决问题。。。port后少个空格问题，解决了。。。
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_for_idea
+    username: root
+    password: 305857
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+

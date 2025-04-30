@@ -1,0 +1,45 @@
+我使用jdk21，使用idea作为运行的IDE，而cursor作为代码编辑器。
+
+本地开发使用的组件工具版本：
+
+java 21.0.2 2024-01-16 LTS
+Java(TM) SE Runtime Environment (build 21.0.2+13-LTS-58)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.2+13-LTS-58, mixed mode, sharing)
+javac 21.0.2
+
+Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+Maven home: D:\Program Files (x86)\apache-maven-3.9.9-bin\apache-maven-3.9.9
+Java version: 21.0.2, vendor: Oracle Corporation, runtime: D:\Program Files\Java\jdk-21
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+
+node --version
+v22.12.0
+
+该项目作为学习java虚拟机的笔记，使用java21作为开发语言，使用idea作为开发工具，使用cursor作为代码编辑器。
+
+简单为我实现，以下是我想学习的java虚拟机知识：
+
+第一部分 自动内存管理
+1、java内存区域与内存溢出异常
+2、垃圾收集器与内存分配策略
+3、虚拟机性能监控、故障处理工具
+4、调优案例分析与实战
+
+第二部分 虚拟机执行子系统
+1、类加载机制
+2、虚拟机字节码执行引擎
+3、类加载及执行子系统的案例与实战
+
+第三部分 程序编译与代码优化
+1、前期编译与优化
+2、后端编译与优化
+3、深入理解Graal
+
+第四部分 高效并发
+1、java内存模型与线程
+2、线程安全与锁优化
+3、java并发编程实践
+
+@Codebase 请仔细理解我需要的要求，并不要生成任何代码。为了快速学习java虚拟机，
+你可以稍微改动我的要求以便适用于你为我生成案例代码，简单清晰告诉我来龙去脉是我的要求之一

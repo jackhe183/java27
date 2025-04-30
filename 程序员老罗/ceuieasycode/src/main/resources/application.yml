@@ -1,0 +1,12 @@
+port:
+  8084
+
+spring:
+  datasource:
+    url: jdbc.mysql://localhost:3306/db-for-vue3
+    username: root
+    password: 305857
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml

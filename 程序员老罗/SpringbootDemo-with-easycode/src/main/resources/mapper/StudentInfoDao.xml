@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.dao.StudentInfoDao">
+
+    <resultMap type="com.example.springbootdemo.entity.StudentInfo" id="StudentInfoMap">
+        <result property="studentId" column="student_id" jdbcType="INTEGER"/>
+        <result property="studentName" column="student_name" jdbcType="VARCHAR"/>
+        <result property="studentGender" column="student_gender" jdbcType="VARCHAR"/>
+        <result property="studentBirthday" column="student_birthday" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StudentInfoMap">
+        select
+          student_id, student_name, student_gender, student_birthday
+        from student_info
+        where student_id = #{studentId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StudentInfoMap">
+        select
+          student_id, student_name, student_gender, student_birthday
+        from student_info
+        <where>
+            <if test="studentId != null">
+                and student_id = #{studentId}
+            </if>
+            <if test="studentName != null and studentName != ''">
+                and student_name = #{studentName}
+            </if>
+            <if test="studentGender != null and studentGender != ''">
+                and student_gender = #{studentGender}
+            </if>
+            <if test="studentBirthday != null and studentBirthday != ''">
+                and student_birthday = #{studentBirthday}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from student_info
+        <where>
+            <if test="studentId != null">
+                and student_id = #{studentId}
+            </if>
+            <if test="studentName != null and studentName != ''">
+                and student_name = #{studentName}
+            </if>
+            <if test="studentGender != null and studentGender != ''">
+                and student_gender = #{studentGender}
+            </if>
+            <if test="studentBirthday != null and studentBirthday != ''">
+                and student_birthday = #{studentBirthday}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="studentId" useGeneratedKeys="true">
+        insert into student_info(student_name, student_gender, student_birthday)
+        values (#{studentName}, #{studentGender}, #{studentBirthday})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="studentId" useGeneratedKeys="true">
+        insert into student_info(student_name, student_gender, student_birthday)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.studentName}, #{entity.studentGender}, #{entity.studentBirthday})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="studentId" useGeneratedKeys="true">
+        insert into student_info(student_name, student_gender, student_birthday)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.studentName}, #{entity.studentGender}, #{entity.studentBirthday})
+        </foreach>
+        on duplicate key update
+        student_name = values(student_name),
+        student_gender = values(student_gender),
+        student_birthday = values(student_birthday)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update student_info
+        <set>
+            <if test="studentName != null and studentName != ''">
+                student_name = #{studentName},
+            </if>
+            <if test="studentGender != null and studentGender != ''">
+                student_gender = #{studentGender},
+            </if>
+            <if test="studentBirthday != null and studentBirthday != ''">
+                student_birthday = #{studentBirthday},
+            </if>
+        </set>
+        where student_id = #{studentId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from student_info where student_id = #{studentId}
+    </delete>
+
+</mapper>
+

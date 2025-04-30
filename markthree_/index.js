@@ -1,0 +1,1 @@
+console.log(100)//npm run foo就会执行index js

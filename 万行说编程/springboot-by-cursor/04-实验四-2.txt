@@ -1,0 +1,71 @@
+
+
+实验四 事务、数据库备份、导入导出
+和数据库部署
+实验目的
+1)熟悉SQL Server 2012、2019 中SQL Server Management Studio的环境
+2)掌握事务、数据库备份、导入导出
+3)掌握数据库系统设计部署流程
+
+实验准备
+1)装有SQL Server 2012、2019的PC机。
+2)明确能够创建数据库的用户必须是系统管理员。
+实验要求
+1)熟练使用SQL Server Management Studio（简称SSMS）中的进行数据库的恢复。
+2)掌握事务、备份、恢复和导入导出。
+3)熟悉PowerDesigner、Visio等辅助工具。
+4)完成实验报告。
+实验内容
+1.创建备份设备mydiskdump，并备份数据库eduDB，建立SQL程序；
+2.建立一个作业，设定每周日晚上00:00自动备份数据库，重复执行，并生成SQL代码。
+3.对eduDB先建立一个完全备份，然后删除学号为：200203080101同学的所有选修成绩后，建立该数据库的增量备份；
+4.在3的基础上，建立一个空的数据库，恢复3）生成的数据库内容；
+5.显示事务处理和死锁演示；
+5.1. 设计一组操作产生“脏”读问题，然后通过封锁避免“脏”读问题。
+begin transaction trans01
+update s 
+set age=25
+where s#='200203080101'
+
+waitfor delay '00:00:20'
+
+rollback transaction trans01
+
+select * from s where s#='200203080101'
+// 不加锁
+select * from s with(nolock) where s#='200203080101'
+5.2. 设计一组操作产生不可重复读问题，然后通过封锁避免不可重复读问题。
+--例子 2
+--01
+begin transaction trans02
+select * from s where s#='200203080101'
+
+waitfor delay '00:00:20'
+
+select * from s where s#='200203080101'
+
+commit transaction trans02
+
+--02
+--新开一个查询分析窗
+begin transaction trans03
+update s 
+set age=25
+where s#='200203080101'
+
+commit transaction trans03
+5.3. 设计一组操作产生丢失更新问题，然后通过封锁避免丢失更新问题。
+5.4 设计一组产生死锁的操作，再利用相同顺序法有效的避免死锁。
+
+
+6.数据的导入、导出（Excel、其他数据导入）
+
+7.在实验三的基础上，创建eduDB数据库中SC表的操作日志，对数据库的新增、修改、删除信息。(采用触发器)
+
+8.设计一个图书馆数据库，此数据库中对每个借阅者保存读者记录，包括读者号、姓名、地址、性别、年龄、单位；对每本书有书号、书名、作者、出版社。对每本被借出的书保存读者号、借出日期和应还日期。要求给出E-R图，再将其转换为关系模型。
+
+9.结合8提要求用Visio或PowerDesigner设计数据库；
+
+10.根据提供的Northwind示例数据库，部署到本地SQL Server服务器
+
+11.利用PowerDesigner的反向工程分析Northwind数据库的结构和ER图。

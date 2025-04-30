@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.mapper.StudentInfoMapper">
+<!--  耗了那么长时间在检查，只是因为自己的路径没写对，单词写错了。。。  -->
+    <select id="findStudentById" resultType="com.example.springbootdemo.entity.StudentInfo">
+        SELECT student_name, student_gender
+        FROM student_info
+        WHERE student_id = 3
+    </select>
+</mapper>

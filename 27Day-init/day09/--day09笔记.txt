@@ -1,0 +1,18 @@
+Alt + Insert 快捷键在IDEA可以调出getter and setter快速补全代码。
+
+抽象类public abstract class Demo和接口public interface Demo相似但是有本质不同。
+
+接口里所有方法的定义都是共有抽象的，不写public abstract程序会自动帮你加上去，而抽象类中可有非抽象方法。
+
+接口里变量只能为public abstract final型，而抽象类中可以有普通变量。
+
+接口要被子类实现implements，而抽象类要被子类继承extends。
+
+接口中全为方法的声明，也就是没有函数体{ }的，而抽象类中可以有方法的实现。有类implements了接口，就要override重载方法否则会报错。
+
+接口里是放方法的，由于给外界提供一套统一的接口，不能像抽象类那样放构造函数。
+
+多个接口可以被同一个类implements实现，而抽象类只能被单继承。
+
+
+

@@ -1,0 +1,89 @@
+# 项目规范配置
+rules:
+  # Java代码规范
+  java:
+    # 文件命名规则
+    file_naming:
+      - pattern: "[A-Z][a-zA-Z0-9]*\\.java$"
+        message: "Java文件名必须以大写字母开头，采用驼峰命名法"
+    
+    # 包命名规则
+    package_naming:
+      - pattern: "^[a-z]+([.][a-z]+)*$"
+        message: "包名必须全小写，可以使用点号分隔"
+    
+    # 类命名规则
+    class_naming:
+      - pattern: "^[A-Z][a-zA-Z0-9]*$"
+        message: "类名必须以大写字母开头，采用驼峰命名法"
+    
+    # 方法命名规则
+    method_naming:
+      - pattern: "^[a-z][a-zA-Z0-9]*$"
+        message: "方法名必须以小写字母开头，采用驼峰命名法"
+    
+    # 变量命名规则
+    variable_naming:
+      - pattern: "^[a-z][a-zA-Z0-9]*$"
+        message: "变量名必须以小写字母开头，采用驼峰命名法"
+
+  # 代码格式化规则
+  formatting:
+    indent_style: space
+    indent_size: 4
+    max_line_length: 120
+    
+  # 提交信息规范
+  commit:
+    message_pattern: "^(feat|fix|docs|style|refactor|test|chore):\\s.+"
+    message_sample: "feat: 添加用户登录功能"
+    types:
+      - feat     # 新功能
+      - fix      # 修复bug
+      - docs     # 文档更新
+      - style    # 代码格式调整
+      - refactor # 重构
+      - test     # 测试相关
+      - chore    # 构建过程或辅助工具的变动
+
+# 文件结构规范
+structure:
+  backend:
+    src:
+      main:
+        java:
+          com.example.springbootbycursor:
+            - config      # 配置类
+            - controller  # 控制器
+            - model      # 实体类
+            - repository # 数据访问层
+            - service    # 业务逻辑层
+            - dto        # 数据传输对象
+            - common     # 公共组件
+        resources:
+          - static    # 静态资源
+          - templates # 模板文件
+          - application.properties # 配置文件
+  
+  frontend:
+    library-ui:
+      src:
+        - api        # API接口
+        - components # 组件
+        - views      # 页面
+        - router    # 路由
+        - store     # 状态管理
+        - utils     # 工具函数
+        - assets    # 资源文件
+
+# 代码审查规则
+review:
+  required: true
+  checklist:
+    - 代码是否符合命名规范
+    - 是否包含适当的注释
+    - 是否编写了单元测试
+    - 是否处理了异常情况
+    - 是否遵循了设计模式原则
+    - 是否有冗余代码
+    - 是否考虑了性能问题

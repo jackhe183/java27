@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "element-plus": "^2.x",
+    "vue-router": "^4.x",
+    "pinia": "^2.x",
+    "axios": "^1.x"
+  }
+} 

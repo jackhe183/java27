@@ -1,0 +1,17 @@
+
+server.port: 9100
+server.servlet.context-path: /api
+
+BASE_LOCATION: D:\projects\java_shop
+DB_NAME: shop
+
+#BASE_LOCATION: C:\Users\Administrator\Desktop\java-shop
+#DB_NAME: java_shop
+
+ 
+File:
+  uploadPath: ${BASE_LOCATION}\server\upload
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

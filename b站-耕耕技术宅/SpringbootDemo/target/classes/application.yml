@@ -1,0 +1,21 @@
+server:
+  port: 8082
+#  这里很奇怪，使用8082端口反而访问不了了，使用8080端口倒是可以
+#  待解决问题。。。
+#  后续：port后少个空格问题，解决了。。。
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_for_idea
+    username: root
+    password: 305857
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+#ERROR 3512 --- [nio-8082-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.example.springbootdemo.mapper.StudentInfoMapper.findAll] with root cause
+#  耕耕技术宅
+#  2020-7-22
+#  早上有位同学问我，我看了下，基本是yml的配置格式问题，
+#  mybatis 要跟spring 同级别，代码缩进的问题
